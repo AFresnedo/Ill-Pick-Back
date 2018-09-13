@@ -14,7 +14,7 @@ var userSchema = new mongoose.Schema({
     minlength: 6,
     maxlength: 99
   },
-  faves: [{ type: Schema.Types.ObjectId, ref: 'Meal' }]
+  faves: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Meal' }]
 });
 
 // Override 'toJSON' to prevent the password from being returned with the user

@@ -6,7 +6,7 @@ seeder.connect('mongodb://localhost/3000', function() {
   // Load Mongoose models
   seeder.loadModels([
     'models/Meal.js',
-    'models/user.js'
+    'models/User.js'
   ]);
 
   // Clear specified collections
