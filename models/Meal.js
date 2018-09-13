@@ -16,3 +16,5 @@ let mealSchema = new mongoose.Schema({
     default: false
   }
 });
+
+module.exports = mongoose.model('Meal', mealSchema);
