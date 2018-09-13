@@ -1,14 +1,9 @@
 # Summary
- A full-stack MERN boilerplate app
-
-# Demo
-
-Coming soon!
+API and Database for Ill Pick
 
 # Technologies Used
 * Mongodb
 * Express
-* React
 * Node
 
 ## React Components
@@ -36,7 +31,7 @@ METHOD | URL | Purpose
 --- | --- | ---
 POST | /auth/signup | Adds new user to user database
 POST | /auth/login | Authenticates login details
-POST | /auth/me/from/token | Checks if token is present on browser refresh
+POST | /auth/me/from/token | Update user data
 
 ## Still To Do
 * Make detailed and user-friendly alerts for error/success messages 
