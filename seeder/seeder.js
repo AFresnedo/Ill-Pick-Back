@@ -34,6 +34,11 @@ var data = [
       {
         'name': 'Burger',
         'prep': 15
+      },
+      {
+        'name': 'Bacon and Eggs',
+        'prep': 2,
+        'ingredients': ['bacon', 'egg']
       }
     ]
   }

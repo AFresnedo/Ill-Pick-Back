@@ -4,7 +4,14 @@ const router = express.Router();
 const db = require('../models');
 
 router.get('/', (req, res) => {
-
+  db.find()
+    .then(meals => {
+      console.log(meals);
+      res.send(meals);
+    })
+    .catch(err => {
+      res.send('error fetching meals, yell at andres');
+    });
 });
 
 // router.post('/add', (req, res) => {
