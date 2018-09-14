@@ -4,17 +4,20 @@ const router = express.Router();
 const db = require('../models');
 
 router.get('/', (req, res) => {
-  db.find()
+  db.Meal.find()
     .then(meals => {
       console.log(meals);
       res.send(meals);
     })
     .catch(err => {
+      console.log('error getting meals', err);
       res.send('error fetching meals, yell at andres');
     });
 });
 
 // router.post('/add', (req, res) => {
-  // console.log('req.body is', req.body);
-  // db.Meal.create({req.body});
+// console.log('req.body is', req.body);
+// db.Meal.create({req.body});
 // });
+
+module.export router;
