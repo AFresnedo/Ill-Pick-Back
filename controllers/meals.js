@@ -20,4 +20,4 @@ router.get('/', (req, res) => {
 // db.Meal.create({req.body});
 // });
 
-module.export router;
+module.exports = router;
