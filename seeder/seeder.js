@@ -39,6 +39,26 @@ var data = [
         'name': 'Bacon and Eggs',
         'prep': 2,
         'ingredients': ['bacon', 'egg']
+      },
+      {
+        'name': 'Chicken and Rice',
+        'prep': 20,
+        'ingredients': ['chicken', 'rice']
+      },
+      {
+        'name': 'Pizza'
+      },
+      {
+        'name': 'Lasagna'
+      },
+      {
+        'name': 'Raviolli'
+      },
+      {
+        'name': 'Burrito'
+      },
+      {
+        'name': 'Stew'
       }
     ]
   }
