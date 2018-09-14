@@ -32,7 +32,7 @@ var data = [
         'funny': true
       },
       {
-        'name': 'Burger',
+        'name': 'Hamburger',
         'prep': 15
       },
       {
@@ -55,11 +55,32 @@ var data = [
         'name': 'Raviolli'
       },
       {
-        'name': 'Burrito'
+        'name': 'Burritos'
       },
       {
         'name': 'Stew'
-      }
+      },
+      {
+        'name': 'Fish Tacos'
+      },
+      {
+        'name': 'Spaghetti'
+      },
+      {
+        'name': 'Dr. Pepper'
+      },
+      {
+        'name': 'Hotdogs'
+      },
+      {
+        'name': 'Salad'
+      },
+      {
+        'name': 'Franks and Beans'
+      },
+      {
+        'name': 'Noodles'
+      },
     ]
   }
 ];
