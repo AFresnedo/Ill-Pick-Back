@@ -33,14 +33,18 @@ router.post('/setFaves', (req, res) => {
     })
       .then(foundFav => {
         console.log('found fav:', foundFav);
-        console.log('toAdd meal id:', foundFav.id);
-        faveIds.push();
+        console.log('toAdd meal id:', foundFav[0].id);
+        if (!faveIds.includes(foundFav[0].id)) {
+          console.log('adding new fav');
+          faveIds.push(foundFav[0].id);
+        }
       })
       .catch(err => {
         console.log('err setting faves', err);
       });
     done();
   }, function() {
+    console.log('reached toSave & faves is:', faveIds);
     db.User.findById(req.body.user.id)
       .then(user => {
         console.log('found user:', user);
