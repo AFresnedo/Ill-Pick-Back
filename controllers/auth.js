@@ -9,7 +9,7 @@ const router = express.Router();
 router.post('/login', (req, res) => {
   console.log(req.body);
   // Find out if the user exists (for login, they should)
-  db.User.findOne({email: req.body.email})
+  db.User.findOne({name: req.body.name})
   .then((user) => {
     if(!user || !user.password){
       return res.status(403).send('User not found');
@@ -40,7 +40,7 @@ router.post('/signup', function(req, res) {
   console.log('BODY', req.body);
   // console.log('REST', req)
   //TODO: First check if the user already exists
-  db.User.findOne({ email: req.body.email })
+  db.User.findOne({ name: req.body.name })
   .then((user) => {
     // Database call was a success
     if(user){
