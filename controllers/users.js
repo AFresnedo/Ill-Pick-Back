@@ -22,47 +22,47 @@ router.post('/randFave', (req, res) => {
     });
 });
 
-router.post('/setFaves', async (req, res) => {
+router.post('/setFaves', (req, res) => {
   console.log("THE REQ.BODY INFO: ", req.body);
   console.log("THE FAVES ARE: ", req.body.faves);
   let faves = req.body.faves;
-  async.each(faves, function(fav, done) {
-  }, function() { });
+  let faveIds = [];
+  async.each(faves, async function(fav, done) {
+    await db.Meal.find({
+      name: fav
+    })
+      .then(foundFav => {
+        console.log('found fav:', foundFav);
+        console.log('toAdd meal id:', foundFav.id);
+        faveIds.push();
+      })
+      .catch(err => {
+        console.log('err setting faves', err);
+      });
+    done();
+  }, function() {
+    db.User.findById(req.body.user.id)
+      .then(user => {
+        console.log('found user:', user);
+        console.log('adding meals:', faves);
+        user.faves = faveIds;
+        user.save();
+      })
+      .catch(err => {
+        console.log('err setting faves', err);
+      });
+  });
   // TODO create a list of references
   // let testMeal;
   // await db.Meal.find({
-    // name: req.body.faves[0]
+  // name: req.body.faves[0]
   // }).
-    // then(found => {
-      // testMeal = found;
-      // console.log('added', testMeal);
-    // })
-    // .catch(err => {
-    // });
-  db.User.findById(req.body.user.id)
-    .then(user => {
-      // TODO fix update syntax for mongoose
-      console.log('found user:', user);
-      console.log('adding meal id:', testMeal[0].id);
-      user.faves.push(testMeal[0]);
-      user.save();
-      // user.updateOne({ faves: [testMeal[0].id] });
-      // user.update({
-        // name: user.name,
-        // faves: [testMeal[0].id],
-        // password: user.password
-      // });
-      // user.save(() => {
-      // let userToSave = new db.User({
-      // name: user.name,
-      // faves: [testMeal[0].id],
-      // password: user.password
-      // });
-      // })
-    })
-    .catch(err => {
-      console.log('err setting faves', err);
-    });
+  // then(found => {
+  // testMeal = found;
+  // console.log('added', testMeal);
+  // })
+  // .catch(err => {
+  // });
 });
 
 module.exports = router;
