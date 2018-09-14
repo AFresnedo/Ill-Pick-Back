@@ -23,7 +23,6 @@ userSchema.set('toJSON', {
   transform: function(doc, user, options) {
     var returnJson = {
       id: user._id,
-      email: user.email,
       name: user.name,
       faves: user.faves
     };

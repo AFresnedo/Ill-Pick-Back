@@ -8,5 +8,5 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/ill-pick',
 mongoose.set('useCreateIndex', true);
 
 // Include models from this folder
-module.exports.User = require('./user');
-module.exports.Meal = require('./meal');
+module.exports.User = require('./User');
+module.exports.Meal = require('./Meal');

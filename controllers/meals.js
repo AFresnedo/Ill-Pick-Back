@@ -18,13 +18,13 @@ router.get('/', (req, res) => {
 router.get('/getRandom', (req, res) => {
   db.Meal.find()
     .then(meals => {
-      let index = Math.floor(Math.random() * Math.floor(meals.length));
+      let i = Math.floor(Math.random() * Math.floor(meals.length));
       console.log('random choice:', meals[i]);
       res.send(meals[i]);
     })
     .catch(err => {
       console.log('error getting meals', err);
-      res.send('error fetching meals, yell at andres');
+      res.send('error fetching rand meal, yell at andres');
     });
 });
 
