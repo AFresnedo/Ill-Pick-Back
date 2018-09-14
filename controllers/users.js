@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const async = require('async');
+
 const db = require('../models');
 
 router.post('/randFave', (req, res) => {
@@ -21,29 +23,35 @@ router.post('/randFave', (req, res) => {
 });
 
 router.post('/setFaves', async (req, res) => {
-  console.log("THE REQ.BODY INFO: ", req.body)
-  console.log("THE FAVES ARE: ", req.body.faves)
-  let faves = req.body.faves
+  console.log("THE REQ.BODY INFO: ", req.body);
+  console.log("THE FAVES ARE: ", req.body.faves);
+  let faves = req.body.faves;
+  async.each(faves, function(fav, done) {
+  }, function() { });
   // TODO create a list of references
-  let testMeal;
-  await db.Meal.find({
-    name: req.body.faves[0]
-  }).
-    then(found => {
-      testMeal = found;
-      console.log('added', testMeal);
-    })
-    .catch(err => {
-    });
+  // let testMeal;
+  // await db.Meal.find({
+    // name: req.body.faves[0]
+  // }).
+    // then(found => {
+      // testMeal = found;
+      // console.log('added', testMeal);
+    // })
+    // .catch(err => {
+    // });
   db.User.findById(req.body.user.id)
     .then(user => {
+      // TODO fix update syntax for mongoose
       console.log('found user:', user);
       console.log('adding meal id:', testMeal[0].id);
-      user.update({
-        name: user.name,
-        faves: [testMeal[0].id],
-        password: user.password
-      });
+      user.faves.push(testMeal[0]);
+      user.save();
+      // user.updateOne({ faves: [testMeal[0].id] });
+      // user.update({
+        // name: user.name,
+        // faves: [testMeal[0].id],
+        // password: user.password
+      // });
       // user.save(() => {
       // let userToSave = new db.User({
       // name: user.name,
