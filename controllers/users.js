@@ -17,14 +17,12 @@ router.get('/randFave', (req, res) => {
 });
 
 router.post('/setFaves', (req, res) => {
-  db.User.findById(req.body.id)
+  console.log("THE REQ INFO: ", req.body.user.id)
+  console.log("THE FAVES ARE: ", req.body.faves)
+  db.User.findByIdAndUpdate(req.body.user.id, {$set: {faves: req.body.faves}})
     .then(user => {
-      user.save(() => {
-        let userToSave = new db.User({
-          name: req.body.name,
-          faves: req.body.faves
-        });
-      });
+      console.log('Successful Update')
+      res.send(updatedFaves)
     })
     .catch(err => {
       console.log('err setting faves', err);

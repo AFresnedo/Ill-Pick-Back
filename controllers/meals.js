@@ -28,9 +28,12 @@ router.get('/getRandom', (req, res) => {
     });
 });
 
+module.exports = router;
+
+
+
+
 // router.post('/add', (req, res) => {
 // console.log('req.body is', req.body);
 // db.Meal.create({req.body});
 // });
-
-module.exports = router;

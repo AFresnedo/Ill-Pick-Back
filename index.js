@@ -20,6 +20,7 @@ app.use(cors());
 // do not accept "weird" data, also prevents a potential source of server crash
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({extended: false}));
+app.use('/meals', require('./controllers/meals'));
 
 // helper function: this allows our server to parse incoming token from client
 function fromRequest(req){
