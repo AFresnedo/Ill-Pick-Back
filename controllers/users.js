@@ -3,15 +3,19 @@ const router = express.Router();
 
 const db = require('../models');
 
-router.get('/randFave', (req, res) => {
+router.post('/randFave', (req, res) => {
+  console.log('reqbodyId is:', req.body.id);
   db.User.findById(req.body.id)
-    .populate('meal')
-    .then(users => {
-      let index = Math.floor(Math.random() * Math.floor(users.meals.length));
-      res.send(users.meals[index]);
+    .populate('faves')
+    .then(user => {
+      console.log('found user for randFave:', user);
+      console.log('faves is', user.faves);
+      let index = Math.floor(Math.random() * Math.floor(user.faves.length));
+      res.send(user.faves[index]);
     })
     .catch(err => {
-      console.log('error getting random fave for user:', err);
+      console.log('failed to perform DB query for randFave', err);
+      // console.log('error getting random fave for user:', err);
       res.send('error getting random favorite');
     });
 });
@@ -35,15 +39,18 @@ router.post('/setFaves', async (req, res) => {
     .then(user => {
       console.log('found user:', user);
       console.log('adding meal id:', testMeal[0].id);
-      user.save(() => {
-        let userToSave = new db.User({
-          name: req.body.name,
-          faves: testMeal[0].id,
-          password: user.password
-        });
+      user.update({
+        name: user.name,
+        faves: [testMeal[0].id],
+        password: user.password
       });
-      console.log('Successful Update')
-      // res.send(updatedFaves)
+      // user.save(() => {
+      // let userToSave = new db.User({
+      // name: user.name,
+      // faves: [testMeal[0].id],
+      // password: user.password
+      // });
+      // })
     })
     .catch(err => {
       console.log('err setting faves', err);
