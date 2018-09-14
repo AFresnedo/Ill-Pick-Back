@@ -1,7 +1,7 @@
 var seeder = require('mongoose-seed');
 
 // Connect to MongoDB via Mongoose
-seeder.connect('mongodb://localhost/3000', function() {
+seeder.connect('mongodb://localhost/ill-pick', function() {
 
   // Load Mongoose models
   seeder.loadModels([

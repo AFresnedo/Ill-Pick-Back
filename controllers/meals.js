@@ -21,5 +21,3 @@ module.exports = router;
 // console.log('req.body is', req.body);
 // db.Meal.create({req.body});
 // });
-
-module.exports = router;
