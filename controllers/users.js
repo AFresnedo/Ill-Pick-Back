@@ -19,6 +19,8 @@ router.get('/randFave', (req, res) => {
 router.post('/setFaves', (req, res) => {
   console.log("THE REQ INFO: ", req.body.id)
   console.log("THE FAVES ARE: ", req.body.faves)
+  let faves = req.body.faves
+  // TODO create a list of references
   db.User.findById(req.body.id)
     .then(user => {
       user.save(() => {
