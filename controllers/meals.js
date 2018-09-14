@@ -24,7 +24,7 @@ router.get('/getRandom', (req, res) => {
     })
     .catch(err => {
       console.log('error getting meals', err);
-      res.send('error fetching meals, yell at andres');
+      res.send('error fetching rand meal, yell at andres');
     });
 });
 

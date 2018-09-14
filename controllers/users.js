@@ -4,7 +4,7 @@ const router = express.Router();
 const db = require('../models');
 
 router.get('/randFave', (req, res) => {
-  db.User.findById(req.user.id)
+  db.User.findById(req.body.id)
     .populate('meal')
     .then(users => {
       let index = Math.floor(Math.random() * Math.floor(users.meals.length));
