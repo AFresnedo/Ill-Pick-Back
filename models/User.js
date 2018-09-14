@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
+let foodSchema = new mongoose.Schema({
+  name: String
+});
+
 var userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -14,7 +18,7 @@ var userSchema = new mongoose.Schema({
     minlength: 6,
     maxlength: 99
   },
-  faves: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Meal' }]
+  faves: [foodSchema]
 });
 
 // Override 'toJSON' to prevent the password from being returned with the user

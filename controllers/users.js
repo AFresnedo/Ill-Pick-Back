@@ -17,12 +17,13 @@ router.get('/randFave', (req, res) => {
 });
 
 router.post('/setFaves', (req, res) => {
-  console.log("THE REQ INFO: ", req.body.id)
+  console.log("THE REQ.BODY INFO: ", req.body)
   console.log("THE FAVES ARE: ", req.body.faves)
   let faves = req.body.faves
   // TODO create a list of references
-  db.User.findById(req.body.id)
+  db.User.findById(req.body.user.id)
     .then(user => {
+      console.log('found user:', user);
       user.save(() => {
         let userToSave = new db.User({
           name: req.body.name,
