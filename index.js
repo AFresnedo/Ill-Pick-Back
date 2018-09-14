@@ -45,6 +45,8 @@ app.use('/auth', expressJWT({
     { url: '/auth/signup', methods: ['POST'] }
   ]
 }), require('./controllers/auth'));
+app.use('/meals', require('./controllers/meals');
+app.use('/users', require('./controllers/users');
 
 // catch all route, ideally don't get here unless mistake made
 // NOTE this should not be user error, this should be front-end dev error
