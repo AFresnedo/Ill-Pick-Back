@@ -38,7 +38,8 @@ router.post('/setFaves', async (req, res) => {
       user.save(() => {
         let userToSave = new db.User({
           name: req.body.name,
-          faves: testMeal[0].id
+          faves: testMeal[0].id,
+          password: user.password
         });
       });
       console.log('Successful Update')
