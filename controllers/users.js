@@ -16,18 +16,29 @@ router.get('/randFave', (req, res) => {
     });
 });
 
-router.post('/setFaves', (req, res) => {
+router.post('/setFaves', async (req, res) => {
   console.log("THE REQ.BODY INFO: ", req.body)
   console.log("THE FAVES ARE: ", req.body.faves)
   let faves = req.body.faves
   // TODO create a list of references
+  let testMeal;
+  await db.Meal.find({
+    name: req.body.faves[0]
+  }).
+    then(found => {
+      testMeal = found;
+      console.log('added', testMeal);
+    })
+    .catch(err => {
+    });
   db.User.findById(req.body.user.id)
     .then(user => {
       console.log('found user:', user);
+      console.log('adding meal id:', testMeal[0].id);
       user.save(() => {
         let userToSave = new db.User({
           name: req.body.name,
-          faves: req.body.faves
+          faves: testMeal[0].id
         });
       });
       console.log('Successful Update')
