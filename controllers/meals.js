@@ -15,7 +15,23 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/getRandom', (req, res) => {
+  db.Meal.find()
+    .then(meals => {
+      let i = Math.floor(Math.random() * Math.floor(meals.length));
+      console.log('random choice:', meals[i]);
+      res.send(meals[i]);
+    })
+    .catch(err => {
+      console.log('error getting meals', err);
+      res.send('error fetching meals, yell at andres');
+    });
+});
+
 module.exports = router;
+
+
+
 
 // router.post('/add', (req, res) => {
 // console.log('req.body is', req.body);
